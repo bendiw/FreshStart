@@ -10,6 +10,7 @@ public class CalendarProgram {
 	private GeneralCal c;
 	private Scanner s;
 	private CalendarPrinter printer;
+	//felter
 	
 	public void printInvitations(){
 //		LocalDate date;
