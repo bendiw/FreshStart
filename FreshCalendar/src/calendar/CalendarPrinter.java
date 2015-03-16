@@ -1,4 +1,4 @@
-package src.calendar;
+package calendar;
 
 import java.io.ObjectInputStream.GetField;
 import java.util.Calendar;

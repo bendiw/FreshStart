@@ -7,7 +7,23 @@ public class Invitation {
 	protected Meeting meeting;
 	private List<Person> invitedPersons;
 	private List<Group> invitedGroups;
+	protected Boolean priority;
+	protected boolean confirmed;
 	
+	public List<Person> getInvitedPersons(){
+		return this.invitedPersons;
+	}
+	
+	public Invitation(Meeting meeting, boolean confirmed, List<Person> invitedPersons){
+		this.meeting = meeting;
+		this.invitedPersons = invitedPersons;
+		this.confirmed = confirmed;
+	}
+	
+	public Invitation(Meeting m, List<Person> invitedPersons){
+		this.meeting = m;
+		this.invitedPersons=invitedPersons;
+	}
 	
 	private void sendInviteToGroups() {
 		for (Group g : invitedGroups) {
@@ -22,24 +38,15 @@ public class Invitation {
 			p.addInvitation(this);				
 		}
 	}
-		
-	protected void respond(Person p, boolean ans) { // for at ans==true må ikke møtet krasje i personal calendar
-		if (ans == true) {
-			meeting.addPerson(p);
-			// sjekk 
-		}
-		else {
-			// varsle fra om at p har avslått?
-		}
+	
+	public void setPriority(boolean pri) {
+		this.priority = pri;
 	}
 	
-	protected void respond(Group g, boolean ans) {
-		if (ans == true) {
-			// legg til g i attendinglist til meeting
-		} else {
-			// varsle fra om at g har avslått?
-		}
+	public String toString(){
+		return "Invited by "+this.meeting.meetingLeader.getName()+" to:\n"+this.meeting.getDate().toString()+"\n"+this.meeting;
 	}
+	
 	
 	public static void main(String[] args) {
 		System.out.println("hrei");
